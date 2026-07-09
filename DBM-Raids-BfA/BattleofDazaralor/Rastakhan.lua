@@ -393,7 +393,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCaressofDeath:Show()
 			specWarnCaressofDeath:Play("defensive")
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) and not DBM:UnitDebuff("player", spellId) then
 				specWarnCaressofDeathOther:Show(args.destName)
 				specWarnCaressofDeathOther:Play("tauntboss")
@@ -469,7 +469,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnNecroticSmashFuckedUp:Show()
 			specWarnNecroticSmashFuckedUp:Play("defensive")
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) and not DBM:UnitDebuff("player", spellId) then
 				specWarnNecroticSmashOther:Show(args.destName)
 				specWarnNecroticSmashOther:Play("changemt")

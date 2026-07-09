@@ -182,7 +182,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(1.5, debuffSwapAggregation, self, spellId)--Aggregate special warnings into a 1.5 second space
 			self:Schedule(2.5, debuffSwapAggregationTwo, self, spellId)--Aggregate yells even further than personal warnings
 		end
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self.Options.SetIconOnMarks and self:IsTanking(uId) then
 			if spellId == 294711 then--Frost
 				self:SetIcon(args.destName, 6)

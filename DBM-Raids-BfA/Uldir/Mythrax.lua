@@ -268,7 +268,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 274693 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			if not args:IsPlayer() then
 				local cid = self:GetCIDFromGUID(args.sourceGUID)

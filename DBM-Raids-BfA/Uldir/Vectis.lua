@@ -347,7 +347,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 265178 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			if amount >= 2 then
@@ -380,7 +380,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				icon = i
 				vectorTargets[i] = args.destName--Assign player name for infoframe
 				if self.Options.SetIconVector and iconsUsed then--Now do icon stuff, if enabled
-					local uId = DBM:GetRaidUnitId(args.destName)
+					local uId = DBM:GetRaidUnitId(args.destName, true)
 					local currentIcon = GetRaidTargetIndex(uId) or 0
 					if currentIcon == 0 then--Don't set icon if target already has one
 						self:SetIcon(args.destName, i)
@@ -450,7 +450,7 @@ function mod:SPELL_AURA_REMOVED(args)
 				if not oneRemoved then
 					vectorTargets[i] = false--remove first assignment we find
 					oneRemoved = true
-					local uId = DBM:GetRaidUnitId(args.destName)
+					local uId = DBM:GetRaidUnitId(args.destName, true)
 					local stillDebuffed = DBM:UnitDebuff(uId, spellId)--Check for remaining debuffs
 					if args:IsPlayer() then
 						if not iconsUsed then

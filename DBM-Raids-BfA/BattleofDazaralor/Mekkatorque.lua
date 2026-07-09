@@ -538,7 +538,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellGigaVoltCharge:Yell(icon, icon, icon)
 			yellGigaVoltChargeFades:Countdown(spellId, nil, icon)
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnGigaVoltChargeTaunt:Show(args.destName)
 				specWarnGigaVoltChargeTaunt:Play("tauntboss")
@@ -562,7 +562,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				self:Schedule(2, shrunkYellRepeater, self)
 			end
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnShrunkTaunt:Show(args.destName)
 				specWarnShrunkTaunt:Play("tauntboss")

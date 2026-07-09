@@ -339,7 +339,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, 6)
 		end
 	elseif spellId == 282384 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			if amount >= 3 then

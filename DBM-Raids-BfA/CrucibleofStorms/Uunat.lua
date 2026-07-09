@@ -590,7 +590,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnTouchoftheEnd:Play("runout")
 		else
 			--Filter non tanks, because some asshole is gonna be in front of boss that shouldn't be (especially in LFR)
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnTouchoftheEndTaunt:Show(args.destName)
 				specWarnTouchoftheEndTaunt:Play("tauntboss")

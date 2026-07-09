@@ -199,14 +199,14 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnObeyorSuffer:Show()
 			specWarnObeyorSuffer:Play("defensive")
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnObeyorSufferTaunt:Show(args.destName)
 				specWarnObeyorSufferTaunt:Play("tauntboss")
 			end
 		end
 	elseif spellId == 301828 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			--local tauntStack = 3
@@ -236,7 +236,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif spellId == 301830 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			--local tauntStack = 3

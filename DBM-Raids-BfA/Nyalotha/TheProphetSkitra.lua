@@ -119,7 +119,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellMark:Yell(3, "")--Diamond
 		end
 	elseif spellId == 308059 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			if (amount >= 3) and amount % 2 == 1 then
@@ -149,7 +149,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		--Assign icon based on debuff player has, so it can be clearly seen which add they will be spawning on mythic
 		local icon
 		if self:IsMythic() then
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if DBM:UnitDebuff(uId, 307784) then--Clouded Mind
 				icon = 2--Orange Circle for clouded mind
 			elseif DBM:UnitDebuff(uId, 307785) then--Twisted Mind

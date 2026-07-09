@@ -292,7 +292,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellBrinyBubble:Yell()
 			yellBrinyBubbleFades:Countdown(spellId)
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnBubbleTaunt:Show(args.destName)
 				specWarnBubbleTaunt:Play("tauntboss")

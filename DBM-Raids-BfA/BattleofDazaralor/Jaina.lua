@@ -421,7 +421,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 285253 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
 			if amount % 3 == 0 then
@@ -449,7 +449,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 287490 then
 		warnFrozenSolid:CombinedShow(2, args.destName)
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId) and not args:IsPlayer() then
 			specWarnIceBlockTaunt:Show(args.destName)
 			specWarnIceBlockTaunt:Play("tauntboss")
@@ -546,7 +546,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnAvalanche:Play("runout")
 			yellAvalanche:Yell(icon, icon, icon)
 		else
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId) then
 				specWarnAvalancheTaunt:Show(args.destName)
 				specWarnAvalancheTaunt:Play("tauntboss")

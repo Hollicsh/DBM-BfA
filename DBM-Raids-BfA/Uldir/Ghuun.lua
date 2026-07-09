@@ -474,7 +474,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 				--Yell countdown scheduled on APPLIED event
 			end
 		else--This event is only ever on tank, so no need for tank filter
-			local uId = DBM:GetRaidUnitId(args.destName)
+			local uId = DBM:GetRaidUnitId(args.destName, true)
 			if self:IsTanking(uId, "boss1", nil, true) then
 				--However, in case 3 tank strat, do need to make sure it's tank actually on Ghuun to avoid notifying unnessesary taunts
 				specWarnExplosiveCorruptionOther:Show(args.destName)
@@ -586,7 +586,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerWaveofCorruptionCD:Start(15, 1)
 		end
 	elseif (spellId == 273405 or spellId == 267409) then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if uId and self:IsTanking(uId) and not args:IsPlayer() then--DBM:UnitDebuff("player", spellId)
 			specWarnDarkBargainOther:Show(args.destName)
 			specWarnDarkBargainOther:Play("changemt")
