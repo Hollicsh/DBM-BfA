@@ -148,7 +148,7 @@ do
 			--Vector Players separately
 			for i=1, 4 do
 				if vectorTargets[i] then
-					local name = vectorTargets[i]
+					local name = vectorTargets[i] or ""
 					DBM:Debug("Vector "..i.." on "..name, 3)
 					local uId = DBM:GetRaidUnitId(name)
 					if uId then--Failsafe
